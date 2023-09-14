@@ -44,5 +44,13 @@ namespace RecipeDataAccess.Data
             return recipe.FirstOrDefault();
         }
 
+        public async Task<List<IngredientsModel?>> GetRecipesIngredients(int recipeId)
+        {
+            var ingredients = await _db.LoadData<IngredientsModel?, dynamic>(
+        "spRecipes_GetRecipeWithIngredients", new { RecipeId = recipeId });
+
+            return ingredients.ToList();
+        }
+
     }
 }

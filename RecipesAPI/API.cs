@@ -13,6 +13,7 @@ namespace RecipesAPI
             app.MapPost("/Recipes", InsertRecipe);
             app.MapPut("/Recipes", UpdateRecipe);
             app.MapDelete("/Recipes", DeleteRecipe);
+            app.MapGet("/Recipes/Ingredients/{RecipeId}", GetIngreByName);
         }
 
         private static async Task<IResult> DeleteRecipe(int RecipeId, IRecipesData data)
@@ -87,6 +88,20 @@ namespace RecipesAPI
             {
                 var results = await data.GetRecipeByName(RecipeName);
                 if (results == null) return Results.NotFound(); 
+                return Results.Ok(results);
+            }
+            catch (Exception ex)
+            {
+                return Results.Problem(ex.Message);
+            }
+        }
+
+        private static async Task<IResult> GetIngreByName(int recipeId, IRecipesData data)
+        {
+            try
+            {
+                var results = await data.GetRecipesIngredients(recipeId);
+                if (results == null) return Results.NotFound();
                 return Results.Ok(results);
             }
             catch (Exception ex)
