@@ -9,3 +9,5 @@ Project consists of three parts:
 
 `PostDeployement Script` is used to create example recipe and to fill ingredients table.
 
+## How to start
+In order to start API, user needs to `Publish` DB, and then change Default connection string in `appsettings.json`.
