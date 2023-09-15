@@ -52,5 +52,8 @@ namespace RecipeDataAccess.Data
             return ingredients.ToList();
         }
 
+      /*  public Task InsertWithIngredients(RecipeWithIngre newRecipe) =>
+            _db.SaveData("spRecipes_Insert",
+                         new { newRecipe.recipe , newRecipe.ingreList });*/
     }
 }

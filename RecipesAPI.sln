@@ -3,11 +3,16 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33829.357
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecipesAPI", "RecipesAPI\RecipesAPI.csproj", "{A5EA004C-0E0F-43EF-84B7-798D0EC62215}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RecipesAPI", "RecipesAPI\RecipesAPI.csproj", "{A5EA004C-0E0F-43EF-84B7-798D0EC62215}"
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "RecipesDB", "RecipesDB\RecipesDB.sqlproj", "{7885D7C3-8C21-4E14-80B2-0B0D291C74E5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecipeDataAccess", "RecipeDataAccess\RecipeDataAccess.csproj", "{65ACD910-5434-4AF0-8D76-C1D44C2E7E11}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RecipeDataAccess", "RecipeDataAccess\RecipeDataAccess.csproj", "{65ACD910-5434-4AF0-8D76-C1D44C2E7E11}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecipesBlazor", "RecipesBlazor\RecipesBlazor.csproj", "{BAEA1B0A-384A-4822-AE7D-3B172F6A07CC}"
+	ProjectSection(ProjectDependencies) = postProject
+		{65ACD910-5434-4AF0-8D76-C1D44C2E7E11} = {65ACD910-5434-4AF0-8D76-C1D44C2E7E11}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,6 +34,10 @@ Global
 		{65ACD910-5434-4AF0-8D76-C1D44C2E7E11}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{65ACD910-5434-4AF0-8D76-C1D44C2E7E11}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{65ACD910-5434-4AF0-8D76-C1D44C2E7E11}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BAEA1B0A-384A-4822-AE7D-3B172F6A07CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BAEA1B0A-384A-4822-AE7D-3B172F6A07CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BAEA1B0A-384A-4822-AE7D-3B172F6A07CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BAEA1B0A-384A-4822-AE7D-3B172F6A07CC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

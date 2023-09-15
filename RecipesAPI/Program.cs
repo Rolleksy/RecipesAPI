@@ -19,9 +19,19 @@ namespace RecipesAPI
             builder.Services.AddSingleton<ISqlDataAccess, SqlDataAccess>();
             builder.Services.AddSingleton<IRecipesData, RecipesData>();
 
-            var app = builder.Build();
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("AllowSpecificOrigin", builder =>
+                {
+                    builder.WithOrigins("https://localhost:7168") // Dodaj domenê, z której pochodzi ¿¹danie
+                           .AllowAnyHeader()
+                           .AllowAnyMethod();
+                });
+            });
 
-           
+            var app = builder.Build();
+            app.UseCors("AllowSpecificOrigin");
+            
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())

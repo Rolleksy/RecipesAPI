@@ -1,8 +1,8 @@
 ﻿CREATE PROCEDURE [dbo].[spRecipes_Delete]
-	@Id int
+	@RecipeId int
 AS
 begin
 	delete
 	from dbo.Recipes
-	where RecipeId = @Id;
+	where RecipeId = @RecipeId;
 end

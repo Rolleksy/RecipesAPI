@@ -14,6 +14,7 @@ namespace RecipesAPI
             app.MapPut("/Recipes", UpdateRecipe);
             app.MapDelete("/Recipes", DeleteRecipe);
             app.MapGet("/Recipes/Ingredients/{RecipeId}", GetIngreByName);
+            
         }
 
         private static async Task<IResult> DeleteRecipe(int RecipeId, IRecipesData data)
@@ -109,6 +110,6 @@ namespace RecipesAPI
                 return Results.Problem(ex.Message);
             }
         }
-
+        
     }
 }

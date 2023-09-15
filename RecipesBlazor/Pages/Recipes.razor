@@ -1,0 +1,42 @@
+﻿@page "/recipes"
+@using System.Text.Json;
+@using System.Text;
+@inject HttpClient client
+<h3>Recipes</h3>
+
+<SfDropDownList TValue="string" TItem="RecipeModel" Placeholder="Select recipe" DataSource="@recipes">
+    <DropDownListFieldSettings Value="recipeId" Text="recipeName"></DropDownListFieldSettings>
+    <DropDownListEvents TValue="string" TItem="RecipeModel" ValueChange="OnValueChange"></DropDownListEvents>
+</SfDropDownList>
+
+<h1>@recipe.recipeName</h1>
+
+<h2>@recipe.category</h2>
+<h3>@recipe.description</h3>
+
+@code {
+    List<RecipeModel> recipes;
+
+    RecipeModel recipe = new();
+    List<IngredientModel> ingredientsList;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadData();
+        recipe.recipeName = string.Empty;
+        recipe.description = string.Empty;
+        recipe.category = string.Empty;
+    }
+
+    private async Task LoadData()
+    {
+        recipes = await client.GetFromJsonAsync<List<RecipeModel>>("/Recipes");
+    }
+
+    private async Task OnValueChange(ChangeEventArgs<string, RecipeModel> args)
+    {
+        recipe.description = args.ItemData.description;
+        recipe.category = args.ItemData.category;
+        recipe.recipeName = args.ItemData.recipeName;
+    }
+}
