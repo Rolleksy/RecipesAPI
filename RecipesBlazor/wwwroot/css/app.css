@@ -99,3 +99,17 @@ a, .btn-link {
     .loading-progress-text:after {
         content: var(--blazor-load-percentage-text, "Loading");
     }
+
+.recipeDesc {
+    text-align: center;
+    color: #0e140f;
+    background-color: #f0efdf;
+    padding: 20px;
+    margin: 30px;
+    border: none;
+    border-radius: 20px;
+}
+
+.recipeName{
+    position:center;
+}

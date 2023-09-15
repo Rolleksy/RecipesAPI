@@ -8,17 +8,48 @@
     <DropDownListFieldSettings Value="recipeId" Text="recipeName"></DropDownListFieldSettings>
     <DropDownListEvents TValue="string" TItem="RecipeModel" ValueChange="OnValueChange"></DropDownListEvents>
 </SfDropDownList>
-
+<br><br>
 <h1>@recipe.recipeName</h1>
+<p>@recipe.category</p>
+<br />
+@if (ingredients == null)
+{
+    <p></p>
+}
+else
+{
+    <table class="tableReci">
+        <thead>
+            <tr>
+                <th>Ingredient</th>
+                <th>Quantity</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var ingredient in ingredients)
+            {
+                <tr>
+                    <td>@ingredient.Name</td>
+                    <td>@ingredient.Quantity @ingredient.QuantityType</td>
+                    
+                </tr>
+            }
+        </tbody>
+    </table>
+}
 
-<h2>@recipe.category</h2>
-<h3>@recipe.description</h3>
+<div class="recipeDesc">
+    <p>@recipe.description</p>
+</div>
+
 
 @code {
     List<RecipeModel> recipes;
 
     RecipeModel recipe = new();
-    List<IngredientModel> ingredientsList;
+    List<IngredientsList> ingredients;
+
 
     protected override async Task OnInitializedAsync()
     {
@@ -31,6 +62,7 @@
     private async Task LoadData()
     {
         recipes = await client.GetFromJsonAsync<List<RecipeModel>>("/Recipes");
+
     }
 
     private async Task OnValueChange(ChangeEventArgs<string, RecipeModel> args)
@@ -38,5 +70,6 @@
         recipe.description = args.ItemData.description;
         recipe.category = args.ItemData.category;
         recipe.recipeName = args.ItemData.recipeName;
+        ingredients = await client.GetFromJsonAsync<List<IngredientsList>>($"/Recipes/Ingredients/{args.ItemData.recipeId}");
     }
 }
