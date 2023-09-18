@@ -11,6 +11,9 @@ namespace RecipeDataAccess.Data
         Task InsertRecipe(RecipeModel newRecipe);
         Task UpdateRecipe(RecipeModel recipe);
         Task<List<IngredientsModel?>> GetRecipesIngredients(int recipeId);
+
+        Task<IEnumerable<IngredientModel?>> GetIngredients();
+        Task InsertIngredients(int ingredientId, int quantity, string quantityType, int recipeId);
         /*Task InsertWithIngredients(RecipeWithIngre newRecipe);*/
     }
 }

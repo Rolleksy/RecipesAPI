@@ -74,6 +74,10 @@
     <Build Include="dbo\StoredProcedures\spRecipes_GetByName.sql" />
     <Build Include="dbo\StoredProcedures\spRecipes_GetRecipeWithIngredients.sql" />
     <Build Include="dbo\StoredProcedures\spRecipes_InsertWithIngredientsAndQuantities.sql" />
+    <Build Include="dbo\StoredProcedures\spIngredients_GetAll.sql" />
+    <Build Include="dbo\StoredProcedures\spIngredients_Get.sql" />
+    <Build Include="dbo\StoredProcedures\spIngredients_Insert.sql" />
+    <Build Include="dbo\StoredProcedures\spIngredients_InsertQuantities.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="dbo\StoredProcedures\Script.PostDeployment.sql" />

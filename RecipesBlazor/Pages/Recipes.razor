@@ -9,16 +9,16 @@
     <DropDownListEvents TValue="string" TItem="RecipeModel" ValueChange="OnValueChange"></DropDownListEvents>
 </SfDropDownList>
 <br><br>
-<h1>@recipe.recipeName</h1>
+<h1 class="recipeName">@recipe.recipeName</h1>
 <p>@recipe.category</p>
 <br />
 @if (ingredients == null)
 {
-    <p></p>
+    <p>nic tu nie ma</p>
 }
 else
 {
-    <table class="tableReci">
+    <table class="table">
         <thead>
             <tr>
                 <th>Ingredient</th>

@@ -1,0 +1,72 @@
+﻿@page "/addrecipe"
+@using System.Text.Json;
+@using System.Text;
+@inject HttpClient client
+<h3>AddRecipe</h3>
+<p>
+    <label>Name of recipe</label>
+    <input @bind="recipeName" />
+</p>
+<p>
+    <label>Cuisine</label>
+    <input @bind="category" />
+</p>
+<p>
+    <label>Description</label>
+    <input class="descriptionInput" @bind="description" />
+</p>
+<p>
+    <label>Prep time in minites</label>
+    <input @bind="prepTime" />
+</p>
+<p>
+    <label>Number of servings</label>
+    <input @bind="servings" />
+</p>
+
+<SfDropDownList TValue="string" TItem="IngredientModel" Placeholder="Select ingredient" DataSource="@ingredients">
+    <DropDownListFieldSettings Value="ingredientId" Text="name"></DropDownListFieldSettings>
+    <DropDownListEvents TValue="string" TItem="IngredientModel" ValueChange="OnValueChange"></DropDownListEvents>
+</SfDropDownList>
+
+
+<h3>Wyszukiwalne Dropdown Menu w Blazor</h3>
+
+<input @bind="searchText" placeholder="Szukaj...">
+<div class="dropdown">
+    <select @bind="selectedOption" class="form-control">
+        <option value="">Wybierz opcję</option>
+        @foreach (var option in options)
+        {
+            
+        }
+    </select>
+</div>
+
+@code {
+    string recipeName;
+    string category;
+    string description;
+    int prepTime;
+    int servings;
+
+    List<IngredientModel> ingredients;
+    List<(int, string)> recipeIngre;
+
+    private async Task OnValueChange(ChangeEventArgs<string, IngredientModel> args)
+    {
+        string ingredientName = args.ItemData.name;
+        int ingredientId = args.ItemData.ingredientId;
+        recipeIngre.Add((ingredientId, ingredientName));
+    }
+
+    private string searchText = "";
+    private string selectedOption = "";
+
+    private List<(int, string)> options;
+
+    protected override async Task OnInitializedAsync()
+    {
+        options = await client.GetFromJsonAsync<List<(int, string)>>("/Ingredients");
+    }
+}

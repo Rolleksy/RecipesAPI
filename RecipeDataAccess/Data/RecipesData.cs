@@ -52,8 +52,21 @@ namespace RecipeDataAccess.Data
             return ingredients.ToList();
         }
 
-      /*  public Task InsertWithIngredients(RecipeWithIngre newRecipe) =>
-            _db.SaveData("spRecipes_Insert",
-                         new { newRecipe.recipe , newRecipe.ingreList });*/
+        /*  public Task InsertWithIngredients(RecipeWithIngre newRecipe) =>
+              _db.SaveData("spRecipes_Insert",
+                           new { newRecipe.recipe , newRecipe.ingreList });*/
+
+        public Task<IEnumerable<IngredientModel>> GetIngredients()
+        {
+            var ingredients =_db.LoadData<IngredientModel, dynamic>("spIngredients_GetAll", new { });
+            return ingredients;
+        }
+
+        public Task InsertIngredients(int ingredientId, int quantity, string quantityType, int recipeId) =>
+            _db.SaveData("spIngredients_Insert", new { recipeId, ingredientId, quantity, quantityType });
+       
+
+
     }
 }
+

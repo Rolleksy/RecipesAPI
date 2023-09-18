@@ -9,7 +9,7 @@ Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "RecipesDB", "RecipesDB\Reci
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RecipeDataAccess", "RecipeDataAccess\RecipeDataAccess.csproj", "{65ACD910-5434-4AF0-8D76-C1D44C2E7E11}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecipesBlazor", "RecipesBlazor\RecipesBlazor.csproj", "{BAEA1B0A-384A-4822-AE7D-3B172F6A07CC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RecipesBlazor", "RecipesBlazor\RecipesBlazor.csproj", "{BAEA1B0A-384A-4822-AE7D-3B172F6A07CC}"
 	ProjectSection(ProjectDependencies) = postProject
 		{65ACD910-5434-4AF0-8D76-C1D44C2E7E11} = {65ACD910-5434-4AF0-8D76-C1D44C2E7E11}
 	EndProjectSection
